@@ -1,7 +1,5 @@
 # SQL-Internhip-task2
 Data Insertion and Handling Nulls
-# SQL-Internhip-task2
-Data Insertion and Handling Nulls
 
 # Library Management SQL - Task 2
 
