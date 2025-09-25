@@ -1,67 +1,67 @@
 # SQL-Internhip-task2
 Data Insertion and Handling Nulls
 
-# Library Management SQL - Task 2
 
-## 📌 Overview
-This project is a **Library Management System** with:
-- `Books` table
-- `Members` table
-- `Borrowings` table (relation with ON DELETE CASCADE)
+## 📌 Objective
+Practice inserting, updating, and deleting data while handling NULL and DEFAULT values.
 
-## 🚀 Features
-- Insert, Update, Delete operations
-- Handling NULLs and default values
-- Rollback transactions
-- Insert using SELECT
-- Foreign key with ON DELETE CASCADE
+## 📂 Deliverables
+- `task2.sql` → Contains all INSERT, UPDATE, DELETE statements.
 
-## 📂 Files
-- `task2.sql` → All SQL queries
-- `README.md` → Documentation
-
-## 🛠 Tools Used
-- SQLite (via VS Code)
+## 🔍 Key Concepts Used
+- **DML Commands** → INSERT, UPDATE, DELETE  
+- **NULL Handling** → Used NULL for missing values  
+- **DEFAULT Constraint** → Applied when value not provided  
+- **WHERE Clause** → To update/delete specific rows  
+- **ROLLBACK** → Undo deletion in a transaction  
 
 
-✅ Interview Questions & Answers
+## ✅ Interview Questions & Answers
 
-1. Difference between NULL and 0?
-- NULL = absence of value (unknown, missing).
-- 0 = an actual numeric value.
-    👉 Example: Age = NULL means we don’t know, Age = 0 means the person is a newborn.
+1. **Difference between NULL and 0?**  
+   - `NULL` = unknown / missing value.  
+   - `0` = actual numeric value (zero).  
 
-2. What is a default constraint?
-- A rule that assigns a default value if no value is given.
-    👉 Example: course TEXT DEFAULT 'Not Assigned'
-    If you don’t insert a course, it becomes "Not Assigned".
+2. **What is a default constraint?**  
+   - It assigns a value automatically when no value is provided. Example: `age INT DEFAULT 18`.
 
-3. How does IS NULL work?
-- Used to check if a column value is NULL.
-    👉 Example: SELECT * FROM Books WHERE available_copies IS NULL;
+3. **How does IS NULL work?**  
+   - Used to check missing values. Example: `SELECT * FROM Students WHERE email IS NULL;`.
 
-4. How do you update multiple rows?
-- By using a WHERE condition that matches more than one row.
-    👉 Example: UPDATE Books SET available_copies = 1 WHERE available_copies IS NULL;
+4. **How do you update multiple rows?**  
+   - By using `UPDATE ... WHERE`. Example:  
+     ```sql
+     UPDATE Books SET available_copies = 5 WHERE author = 'Navathe';
+     ```
 
-5. Can we insert partial values?
-- ✅ Yes, if columns have default values or allow NULL.
-    👉 Example: INSERT INTO Books (title) VALUES ('SQL Basics');
+5. **Can we insert partial values?**  
+   - Yes, if the remaining columns have `NULL` or `DEFAULT` values.  
 
-6. What happens if a NOT NULL field is left empty?
-- ❌ Error will occur because the column requires a value.
+6. **What happens if a NOT NULL field is left empty?**  
+   - Error occurs, because NOT NULL requires a value.  
 
-7. How do you rollback a deletion?
-- Use transactions: 
-    BEGIN TRANSACTION;
-    DELETE FROM Books WHERE book_id = 1;
-    ROLLBACK;  -- Undo the delete
+7. **How do you rollback a deletion?**  
+   - Use transaction:  
+     ```sql
+     BEGIN;
+     DELETE FROM Books WHERE book_id = 103;
+     ROLLBACK;
+     ```
 
-8. Can we insert values into specific columns only?
-- ✅ Yes, just mention the column names.
-    👉 Example: INSERT INTO Books (title, author) VALUES ('Python 101', 'Soumya');
+8. **Can we insert values into specific columns only?**  
+   - Yes, specify column names in `INSERT INTO`.  
 
-9. How to insert values using SELECT?
-- Copy values from another table/row.
-    👉 Example: INSERT INTO Books (title, author, published_year)
+9. **How to insert values using SELECT?**  
+   - Example:  
+     ```sql
+     INSERT INTO Students (student_id, name, email, age)
+     SELECT 4, name, email, age FROM Students WHERE student_id = 1;
+     ```
 
+10. **What is ON DELETE CASCADE?**  
+    - If a parent record is deleted, all related child records are also deleted automatically.  
+
+
+## 🚀 Outcome
+- Database populated with clean and consistent data.  
+- Learned to handle NULLs, defaults, and transactions.  
